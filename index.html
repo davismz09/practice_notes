@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilos.css">
+  <title>Notas</title>
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <header class="header__container">
+    <div class="header__container-logo">
+      <div class="header__logo">
+        <h1 class="header__title">Notes</h1>
+      </div>
+      <div class="header__icon">
+        <i class='bx bx-customize '></i>
+      </div>
+    </div>
+  </header>
+
+  <main class="main__container">
+    <section class="notes__container">
+      <form action="" class="notes__form">
+        <h2 class="notes__title">Registrar Nota</h2>
+        <input id="input" type="text" class="notes__text notes__input" placeholder="Título" required>
+        <textarea id="textArea" name="" class="notes__text notes__textArea" id="notes__textArea" cols="50" rows="10"
+          required placeholder="Nota" autocapitalize="sentences"></textarea>
+        <input id="button" type="submit" class="notes__submit" value="Guardar">
+      </form>
+    </section>
+    <section id="section" class="notes__save">
+      <h2 class="notes__save-title">
+        Lista de notas
+      </h2>
+      <p id="textNotes" class="notes__save-paragraph">
+        No se ha creado ninguna tarea
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer__container">
+    <p class="footer__text">Pirated(p) 2022 David Mite de James Loor</p>
+    <p class="footer__text">Copiado por David Mite de James Loor</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</html>
