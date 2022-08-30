@@ -5,28 +5,40 @@ const texto = document.getElementById("textNotes");
 const container = document.getElementById("section");
 const ol = document.createElement("ol");
 container.appendChild(ol);
+
 let acc = 0;
-button.addEventListener("click", (event)=>{
-  if(input.value == "" || textArea.value == ""){
-    return 0;
-  }
-  else
-  {
-const li = document.createElement("li");
-const h4 = document.createElement("h4")
-const p = document.createElement("p");
-  li.className = "content_notes";
 
-  ol.appendChild(li);
-  li.appendChild(h4);
-  li.appendChild(p);
-  texto.textContent = "";
-    acc++;
-  h4.innerHTML = `${acc}. ${input.value}`;
-  p.innerHTML = textArea.value;
+const isInputEmpty = (input) => {
+  return input.value == "";
+};
 
+const resetForm = () => {
   input.value = "";
   textArea.value = "";
+};
+
+const createNotes = (i, title, description) => {
+  const li = document.createElement("li"); //padre
+  const h4 = document.createElement("h4"); //hijo
+  const p = document.createElement("p"); //hijo
+  li.className = "content_notes";
+  h4.innerHTML = `${i}. ${title}`;
+  p.innerHTML = description;
+  li.appendChild(h4);
+  li.appendChild(p);
+
+  return li;
+};
+button.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (!isInputEmpty(input) && !isInputEmpty(textArea)) {
+    const newNote = createNotes(++acc, input.value, textArea.value);
+    ol.appendChild(newNote);
+    texto.textContent = "";
+
+    resetForm();
+  } else {
+    alert("Por favor, rellene los campos correspondientes");
   }
-    event.preventDefault();
-})
+});
