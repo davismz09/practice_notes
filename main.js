@@ -8,9 +8,8 @@ const $ol = document.createElement("ol");
 $container.appendChild($ol);
 //isLocalStorageUsed
 const isLocalStorageUsed = () => localStorage.getItem("Notas") !== null;
-console.log(isLocalStorageUsed());
+//console.log(isLocalStorageUsed());
 let acc = 0;
-
 
 const isInputEmpty = (input) => {
   return input.value === "";
@@ -40,17 +39,17 @@ if (isLocalStorageUsed()) {
   notas = JSON.parse(window.localStorage.getItem("Notas"));
   notas.forEach((nota, i) => {
     note = createNotes(++i, nota.title, nota.descripcion);
-    ol.appendChild(note);
+    $ol.appendChild(note);
   });
-  texto.textContent = "";
+  $texto.textContent = "";
 }
 
-button.addEventListener("click", (event) => {
+$button.addEventListener("click", (event) => {
   event.preventDefault();
 
-  if (!isInputEmpty(input) && !isInputEmpty(textArea)) {
-    const inputTitle = input.value;
-    const inputDescription = textArea.value;
+  if (!isInputEmpty($input) && !isInputEmpty($textArea)) {
+    const inputTitle = $input.value;
+    const inputDescription = $textArea.value;
 
     notas.push({ title: inputTitle, descripcion: inputDescription });
     window.localStorage.setItem("Notas", JSON.stringify(notas));
@@ -60,8 +59,8 @@ button.addEventListener("click", (event) => {
     listNotes.forEach(({ title, descripcion }, i) => {
       note = createNotes(++i, title, descripcion);
     });
-    ol.appendChild(note);
-    texto.textContent = "";
+    $ol.appendChild(note);
+    $texto.textContent = "";
     resetForm();
   } else {
     alert("Por favor, rellene los campos correspondientes");
